@@ -1,0 +1,59 @@
+<h2 class="heading">Users List</h2>
+
+<h3>Admin Access</h3>
+<button 
+  [routerLink]="['/edit/0']"
+  style="
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;"
+  onmouseover="this.style.backgroundColor='#0056b3'"
+  onmouseout="this.style.backgroundColor='#007bff'"
+>
+  Add New User
+</button>
+
+
+
+<div class="table-container">
+  <table class="user-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>Institutions</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.firstname }} {{ user.lastname }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          {{ user.address?.streetAddress }}, {{ user.address?.city }},
+          {{ user.address?.state }} {{ user.address?.postalCode }}
+        </td>
+        <td>
+          {{ user.telephones?.type }}: {{ user.telephones?.phoneNumber }}
+        </td>
+        <td>
+          <ul>
+            <li *ngFor="let ui of user.userInstitutions">
+              {{ ui.institutions?.name }} ({{ ui.institutions?.city }})
+            </li>
+          </ul>
+        </td>
+        <td>
+          <button class="edit-btn" [routerLink]="['/edit', user.id]">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
