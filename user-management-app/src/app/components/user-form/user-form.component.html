@@ -1,0 +1,37 @@
+<h2 class="form-title">{{ isEditMode ? 'Edit User' : 'Create User' }}</h2>
+
+<div class="user-form-container">
+  <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+    
+    <div class="form-row">
+      <input name="firstname" [(ngModel)]="user.firstname" placeholder="First Name" required />
+      <input name="lastname" [(ngModel)]="user.lastname" placeholder="Last Name" required />
+    </div>
+
+    <div class="form-row">
+      <input name="email" [(ngModel)]="user.email" placeholder="Email" required />
+      <input name="birthdate" type="date" [(ngModel)]="user.birthdate" required />
+    </div>
+
+    <h3 class="form-section-title">Address</h3>
+    <div class="form-row">
+      <input name="streetAddress" [(ngModel)]="user.address.streetAddress" placeholder="Street Address" />
+    </div>
+    <div class="form-row">
+      <input name="city" [(ngModel)]="user.address.city" placeholder="City" />
+      <input name="state" [(ngModel)]="user.address.state" placeholder="State" />
+      <input name="postalCode" [(ngModel)]="user.address.postalCode" placeholder="Postal Code" />
+    </div>
+
+    <h3 class="form-section-title">Phone</h3>
+    <div class="form-row">
+      <input name="phoneNumber" [(ngModel)]="user.telephones.phoneNumber" placeholder="Phone Number" />
+      <input name="type" [(ngModel)]="user.telephones.type" placeholder="Type (mobile/home/work)" />
+    </div>
+
+    <div class="form-actions">
+      <button type="submit">{{ isEditMode ? 'Update User' : 'Create User' }}</button>
+    </div>
+
+  </form>
+</div>
